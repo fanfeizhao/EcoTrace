@@ -43,7 +43,7 @@ Open `http://127.0.0.1:8098/app?mode=guest`. The server is intended for local us
 - `app/`: source from the installed EcoTrace project.
 - `editor/`: V19 review and methods extension, if found.
 - `gis/`: local GIS preparation and route integration, if found.
-- `docs/`: methods, data requirements, and AI disclosure.
+- `docs/`: methods and data requirements.
 - `export_report.json`: file counts and dependency inventory; no API-key values.
 
 ## Publication preparation
@@ -54,4 +54,4 @@ Historical standalone app builds and update backups were omitted from this copy.
 
 The last dataset supplied for review contained 5,617 candidate records. Counts can change with edits and are read from the installed database. Candidates are possible locations to investigate, not planted trees or approved planting sites. The additional 120-point QGIS trial was rejected and was not imported.
 
-See `docs/AI_DISCLOSURE.md` for AI assistance and personal contributions. See `docs/DATA_AND_METHODS.md` for modeling assumptions. A public repository makes source visible; third-party data and imagery retain their own usage terms. No blanket data-redistribution license is granted by this export.
+See `docs/DATA_AND_METHODS.md` for modeling assumptions. A public repository makes source visible; third-party data and imagery retain their own usage terms. No blanket data-redistribution license is granted by this export.
