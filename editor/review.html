@@ -1,0 +1,190 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EcoTrace · Review planting sites</title>
+<style>
+:root{font-family:system-ui,sans-serif;color:#19392d;background:#f2f6f2}*{box-sizing:border-box}body{margin:0}main{max-width:1180px;margin:auto;padding:28px 22px}h1{font-size:32px;margin:8px 0}h2{margin-bottom:6px}p{line-height:1.5}header{display:flex;gap:20px;align-items:center;justify-content:space-between}.sub{color:#52685c;font-size:14px}.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:20px 0}input,select,textarea,button,.link{font:inherit;border:1px solid #b6cbbd;border-radius:9px;padding:9px 12px;background:white;color:#19392d}input[type=search]{flex:1;min-width:240px}button,.link{cursor:pointer}button:hover,.link:hover{background:#e6f3e9}button:disabled{opacity:.5;cursor:default}.primary{background:#155c42;color:white}.danger{color:#963131}.badge{font-size:12px;padding:4px 8px;border-radius:12px;background:#e8eee5;display:inline-block}.row{background:white;border:1px solid #d3dfd5;border-radius:15px;display:grid;grid-template-columns:360px 1fr;gap:20px;padding:15px;margin:14px 0}.thumb{position:relative;aspect-ratio:16/9;background:#e1e8df;overflow:hidden;border-radius:10px}.thumb img{width:100%;height:100%;object-fit:contain;display:block}.dot{position:absolute;width:18px;height:18px;transform:translate(-50%,-50%);border:3px solid white;background:#ee3636;border-radius:50%;box-shadow:0 0 0 2px #222;pointer-events:none}.thumb .dot{left:50%;top:50%}.row h3{margin:0 0 7px;font-size:17px}.actions{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}.coords{font-size:13px;color:#54675a}a{color:#146045}.pager{display:flex;align-items:center;gap:14px;justify-content:center;padding:12px}.status{padding:12px;border-radius:10px;background:#e4f0e6}.notice{padding:12px;background:#fff5db;border-radius:10px}.hide{display:none!important}dialog{border:1px solid #a4bfad;border-radius:17px;width:min(1000px,96vw);max-height:95vh;padding:20px;overflow:auto}dialog::backdrop{background:#10251fc9}#map{width:100%;aspect-ratio:16/9;position:relative;background:#dce5dc;overflow:hidden;touch-action:none}#map img{width:100%;height:100%;display:block;user-select:none}#map.armed{cursor:crosshair}#mapLabel{position:absolute;bottom:7px;left:7px;background:#ffffffdc;padding:4px 8px;border-radius:5px;font-size:12px;pointer-events:none}.maptools{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}.attribution{font-size:10px;color:#607367;margin-top:4px}textarea{width:100%;min-height:62px;margin:10px 0}pre{white-space:pre-wrap;font-size:11px;max-height:240px;overflow:auto}details{font-size:13px;margin-top:8px}#toast{position:fixed;right:18px;bottom:18px;max-width:430px;background:#163e2d;color:white;border-radius:12px;padding:15px;z-index:100000}section{scroll-margin-top:15px}@media(max-width:750px){.row{grid-template-columns:1fr}.thumb{max-height:240px}header{display:block}main{padding:15px}h1{font-size:26px}}
+#markers,.thumb-markers{position:absolute;inset:0;pointer-events:none;overflow:hidden}.saved-dot{pointer-events:auto;cursor:pointer;position:absolute;width:12px;height:12px;background:#ef3333;border:2px solid white;border-radius:50%;box-shadow:0 0 0 1px #641b1b;transform:translate(-50%,-50%)}.saved-dot.selected{width:18px;height:18px;box-shadow:0 0 0 3px #ffd34d;z-index:2}#mapLabel{z-index:3;max-width:95%}.thumb .saved-dot{width:10px;height:10px}.thumb .saved-dot.selected{width:15px;height:15px;box-shadow:0 0 0 2px #ffd34d}.saved-dot:focus-visible{outline:3px solid #174cff;outline-offset:3px}.tile-layer{position:absolute;inset:0;overflow:hidden;pointer-events:none}.tile-layer img,#map .tile-layer img,.thumb .tile-layer img{position:absolute;max-width:none;object-fit:fill;display:block}.line-overlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.utility-note{color:#9a5100;font-size:13px}.tile-error{position:absolute;inset:0;display:grid;place-items:center;background:#e1e8df;padding:12px;font-size:12px;color:#333}.row.compact{display:block;padding:12px 16px}.row.compact h3{font-size:15px}.row.compact p{margin:5px 0}.row.compact .actions{margin:7px 0}.row.compact .thumb{max-width:240px}.row.compact details{margin:5px 0}</style></head><body><main><header><div><span class="badge">ECOTRACE · ALL SAVED POINTS · V14</span><h1 id="viewTitle">Uncertain planting sites</h1><p class="sub">Check the location, keep a good candidate, or move it to a better spot.</p></div><a href="/app?mode=guest" target="_blank">Open EcoTrace ↗</a></header>
+<p>2022 canopy overlap is a prompt to check, not a reason to reject a site. A crown may overhang open ground, and trees may have changed since 2022. Keep means “retain this planning candidate,” not planting permission.</p>
+<p><strong>Satellite review: 1,578 direct-canopy points · 170 likely open · 1,126 likely blocked · 282 uncertain.</strong> The list opens on all saved candidates. Labels are advisory; use Keep, Delete, or Relocate to save your decision. The 3 m-only group was not visually reviewed.</p><div id="visualSummary" class="status"></div><div id="summary" class="status">Loading candidate database…</div><div class="controls"><a class="link" href="/canopy-review">282 uncertain</a><a class="link" href="/canopy-review?view=blocked">1,126 likely blocked · quick list</a></div><div class="controls"><input id="search" type="search" aria-label="Search" placeholder="Search candidate ID or area"><select id="visualFilter" aria-label="Satellite review label"><option value="uncertain">Uncertain — needs your review</option><option value="likely_open">Likely open</option><option value="likely_blocked">Likely blocked</option><option value="reviewed">All satellite-reviewed points</option><option value="all" selected>All candidates / other groups</option></select><select id="filter" aria-label="Review status"><option value="all">All candidates</option><option value="pending">Not reviewed</option><option value="added">Added</option><option value="keep">Kept</option><option value="exclude">Deleted / excluded</option><option value="relocate">Relocated</option></select><button id="addCandidate" class="primary">＋ Add candidate</button><button id="refresh">Refresh list</button></div>
+<div class="notice"><strong>Transmission proximity filter</strong><div class="controls"><label><input type="checkbox" id="lineEnabled" checked> Filter EcoTrace suggestions</label><label>Within <input id="lineDistance" type="number" min="0" max="100" step="1" value="20" style="width:85px"> metres of mapped lines</label><button id="applyLines">Apply filter</button><select id="lineView" aria-label="Transmission review filter"><option value="all">Show all review points</option><option value="filtered">Only transmission-filtered points</option></select></div><p id="lineSummary"></p><p class="sub">143 overhead (orange) and 3 underground (blue) line features. The default 20 m is a planning review buffer, not a legal clearance. Filtered points remain here for relocation. Keep does not override this filter. No nearby mapped line does not establish utility clearance.</p></div><p class="sub">Changes save into EcoTrace on this computer. A backup and review history are kept. Recalculate an already displayed route to refresh its planting suggestions. Click any dot to select it, then press Delete selected candidate. Undo restores it. List previews show nearby saved candidates in red and the row’s candidate with a yellow ring. Internet is needed for satellite imagery; its capture date varies.</p>
+<section id="direct"><h2>Canopy directly over the candidate</h2><p class="sub">Original screening group · <span id="directCount"></span></p><div id="directRows"></div><div class="pager" id="directPager"></div></section>
+<section id="near"><h2>Canopy nearby within 3 m</h2><p class="sub">Original screening group · <span id="nearCount"></span></p><div id="nearRows"></div><div class="pager" id="nearPager"></div></section><section id="added"><h2>Added candidates</h2><p class="sub">Your saved planting locations · <span id="addedCount"></span></p><div id="addedRows"></div><div class="pager" id="addedPager"></div></section><section id="other"><h2>Other candidates</h2><p class="sub">Outside the original canopy review groups · <span id="otherCount"></span></p><div id="otherRows"></div><div class="pager" id="otherPager"></div></section></main>
+<dialog id="editor"><header><h2 id="title"></h2><button id="close">Close</button></header><p id="current"></p><div id="newFields" class="hide"><label for="candidateName">Location name (optional)</label><input id="candidateName" maxlength="160" style="width:100%" placeholder="For example: grass strip by the library"><p class="sub">Enter a name and note, then click the map to save a new candidate. Drag or use the arrows to move around.</p></div><div class="maptools"><button id="zoomIn" aria-label="Zoom in">＋</button><button id="zoomOut" aria-label="Zoom out">−</button><button id="west">←</button><button id="north">↑</button><button id="south">↓</button><button id="east">→</button><button id="center">Center on candidate</button><button id="arm" class="primary">Relocate: click a new point</button></div><div id="map"><div id="mapImage" class="tile-layer" aria-label="Satellite map"></div><div id="lineOverlay"></div><div id="markers" aria-label="Saved planting candidate locations"></div><span id="marker" class="hide"></span><span id="mapLabel">Red dots: saved candidates · yellow ring: selected</span></div><div class="attribution">Source: Esri, Vantor, Earthstar Geographics, and the GIS User Community. North is up.</div><p id="mapStatus" role="status">Drag to pan or use the arrow buttons. Press Relocate, then click your new point to save automatically.</p><label for="note">Review note (optional)</label><textarea id="note" maxlength="2000" placeholder="For example: open soil beside the path; keep away from the existing trunk."></textarea><div class="actions"><button id="keep" class="primary">Keep candidate</button><button id="keepNext">Keep &amp; next</button><button id="nextCandidate">Next candidate</button><button id="exclude" class="danger">Delete selected candidate</button><button id="undo">Undo last change</button><button id="addNearby">＋ Add candidates here</button><button id="finishAdd" class="hide">Done adding</button><a id="google" class="link" target="_blank" rel="noopener">Google Maps ↗</a></div><details id="evidenceDetails"><summary>Canopy check and previous notes</summary><pre id="evidence"></pre></details></dialog><div id="toast" class="hide" role="status"></div>
+<script>
+'use strict';
+const TOKEN='__TOKEN__',BUILD='canopy-editor-14-location-note',PAGE=12,R=6378137;
+const $=id=>document.getElementById(id),state={listDirty:false,loading:false,rows:[],mapPoints:[],pages:{direct:0,near:0,added:0,other:0},adding:false,requestId:null,addCount:0,lastAdded:null,selected:null,busy:false,armed:false,ready:false,view:null,seq:0};
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function project(lat,lon){return [R*lon*Math.PI/180,R*Math.log(Math.tan(Math.PI/4+lat*Math.PI/360))]}
+function unproject(x,y){return [Math.atan(Math.sinh(y/R))*180/Math.PI,x/R*180/Math.PI]}
+function bounds(view){const h=view.w*9/16;return [view.x-view.w/2,view.y-h/2,view.x+view.w/2,view.y+h/2]}
+function tileSpecs(view,width=960){
+ const world=2*Math.PI*R,b=bounds(view),z=Math.max(0,Math.min(19,Math.ceil(Math.log2(world*width/(256*view.w))))),span=world/2**z;
+ const out=[];
+ for(let x=Math.floor((b[0]+world/2)/span);x<=Math.floor((b[2]+world/2)/span);x++)for(let y=Math.floor((world/2-b[3])/span);y<=Math.floor((world/2-b[1])/span);y++){
+ const left=x*span-world/2,top=world/2-y*span;
+ out.push({z,x,y,left:(left-b[0])/view.w*100,top:(b[3]-top)/(view.w*9/16)*100,width:span/view.w*100,height:span/(view.w*9/16)*100});
+ }return out;
+}
+function loadTile(t){
+ return new Promise((resolve,reject)=>{
+ let attempt=0,timer,img,finished=false;
+ const next=()=>{if(finished)return;if(timer)clearTimeout(timer);if(img){img.onload=null;img.onerror=null}if(attempt>=2){finished=true;reject(Error('Satellite tile unavailable'));return}
+ const host=['server.arcgisonline.com','services.arcgisonline.com'][attempt++];img=new Image();img.referrerPolicy='no-referrer';img.draggable=false;
+ img.onload=()=>{if(finished)return;finished=true;clearTimeout(timer);resolve(img)};img.onerror=next;
+ timer=setTimeout(next,10000);img.src='https://'+host+'/ArcGIS/rest/services/World_Imagery/MapServer/tile/'+t.z+'/'+t.y+'/'+t.x;
+ };next();
+ });
+}
+async function paintTiles(container,view,width=960,valid=()=>true){
+ const specs=tileSpecs(view,width);
+ const images=await Promise.all(specs.map(loadTile));if(!valid())return false;
+ container.innerHTML='';images.forEach((img,i)=>{const t=specs[i];Object.assign(img.style,{left:t.left+'%',top:t.top+'%',width:t.width+'%',height:t.height+'%'});container.appendChild(img)});return true;
+}
+let previewObserver;
+function loadPreviews(){
+ previewObserver?.disconnect();
+ const start=el=>{const view=JSON.parse(el.dataset.view);paintTiles(el,view,360).catch(()=>{el.innerHTML='<span class="tile-error">Satellite imagery unavailable · use Google Maps</span>'})};
+ if(typeof IntersectionObserver==='undefined'){document.querySelectorAll('.preview-tiles').forEach(start);return}
+ previewObserver=new IntersectionObserver(items=>{for(const item of items)if(item.isIntersecting){previewObserver.unobserve(item.target);start(item.target)}},{rootMargin:'150px'});
+ document.querySelectorAll('.preview-tiles').forEach(el=>previewObserver.observe(el));
+}
+function lineNote(row){const t=row.transmission;if(!t)return '';const n=t.nearest;return (t.filtered?'Filtered from suggestions · ':'')+(n?(n.type==='OH'?'Overhead':'Underground')+' transmission line ≈ '+n.distance_m+' m away.':'No mapped transmission line within 100 m.');}
+function drawLines(){
+ if(!state.view||!state.lines)return;
+ const b=bounds(state.view),paths=[];
+ for(const f of state.lines.features){const parts=f.geometry.type==='MultiLineString'?f.geometry.coordinates:[f.geometry.coordinates];
+ for(const part of parts){const pts=part.map(([lon,lat])=>{const [x,y]=project(lat,lon);return [(x-b[0])/state.view.w*960,(b[3]-y)/(state.view.w*9/16)*540]});
+ if(Math.max(...pts.map(p=>p[0]))<0||Math.min(...pts.map(p=>p[0]))>960||Math.max(...pts.map(p=>p[1]))<0||Math.min(...pts.map(p=>p[1]))>540)continue;
+ paths.push('<polyline points="'+pts.map(p=>p.join(',')).join(' ')+'" fill="none" stroke="'+(f.properties.Type==='OH'?'#ff9c24':'#46b9ff')+'" stroke-width="3"/>');}}
+ $('lineOverlay').innerHTML='<svg class="line-overlay" viewBox="0 0 960 540">'+paths.join('')+'</svg>';
+}
+function viewFor(row){const [x,y]=project(row.latitude,row.longitude);return {x,y,w:90/Math.cos(row.latitude*Math.PI/180)}}
+function maps(row){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(row.latitude+','+row.longitude)}
+let toastTimer;function toast(message){$('toast').textContent=message;$('toast').classList.remove('hide');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.add('hide'),6500)}
+function visualMatch(r){const f=$('visualFilter').value,v=r.visual_review;return f==='all'||(f==='uncertain'?v?.needs_review:f==='reviewed'?!!v:v?.status===f)}
+function visualNote(r){const v=r.visual_review;return v?(v.manual_resolved?'Manually kept · ':'')+v.label+' — '+v.reason:''}
+function preview(r){const v=r.visual_review;if(v?.coordinate_match&&v.index!==null){const [x,y]=project(r.latitude,r.longitude),view={x,y,w:24/Math.cos(r.latitude*Math.PI/180)};return `<div class="thumb" style="aspect-ratio:1"><img loading="lazy" src="/api/canopy-review/visual-image/${v.index}" alt="Reviewed satellite view centered on this candidate" style="position:absolute;width:100%;height:100%;object-fit:fill"><div class="thumb-markers">${markersHtml(view,r.candidate_id,1)}</div></div>`}return `<div class="thumb"><div class="tile-layer preview-tiles" data-view="${esc(JSON.stringify(viewFor(r)))}"></div><div class="thumb-markers">${markersHtml(viewFor(r),r.candidate_id)}</div></div>`}
+function filtered(group){const q=$('search').value.toLowerCase().trim(),f=$('filter').value;return state.rows.filter(r=>r.group===group&&visualMatch(r)&&(f==='all'||r.decision===f)&&($('lineView').value!=='filtered'||r.transmission?.filtered)&&(!q||[r.candidate_id,r.area_name].join(' ').toLowerCase().includes(q)))}
+function compactRow(r){return `<article class="row compact"><h3>${esc(r.candidate_id)} · ${esc(r.area_name||'Candidate')}</h3><p>${esc(visualNote(r))}</p><p class="coords">${r.latitude.toFixed(7)}, ${r.longitude.toFixed(7)} · ${esc(r.decision)}</p><div class="actions"><button data-edit="${esc(r.candidate_id)}" ${r.available?'':'disabled'}>Review / Relocate / Delete</button><button data-keep="${esc(r.candidate_id)}" ${r.available?'':'disabled'}>Keep</button><a target="_blank" rel="noopener" href="${maps(r)}">Google Maps ↗</a></div><details><summary>Show satellite image</summary>${preview(r)}<small>Esri, Vantor, Earthstar Geographics, GIS User Community</small></details></article>`}
+function render(){
+ if($('editor').open){state.listDirty=true;return}state.listDirty=false;
+ $('visualSummary').textContent=state.rows.filter(r=>r.visual_review?.needs_review).length+' uncertain or moved points still need review. Cached review images remain available without an imagery connection. Yellow circle: approximately 1 m radius; not a planting clearance. Capture dates unavailable.';
+ $('lineSummary').textContent=state.rows.filter(r=>r.transmission?.filtered&&r.decision!=='exclude').length+' candidates filtered from EcoTrace suggestions; records remain available below.';
+ $('viewTitle').textContent=$('visualFilter').value==='uncertain'?'Uncertain planting sites':$('visualFilter').value==='likely_blocked'?'Likely blocked · quick list':'Review planting sites';
+ const pageSize=$('visualFilter').value==='likely_blocked'?50:PAGE;
+ const reviewed=state.rows.filter(r=>['keep','exclude','relocate','added'].includes(r.decision)).length;
+ $('summary').textContent=reviewed.toLocaleString()+' / '+state.rows.length.toLocaleString()+' reviewed · '+state.rows.filter(r=>r.decision==='keep').length+' kept · '+state.rows.filter(r=>r.decision==='exclude').length+' excluded · '+state.rows.filter(r=>r.decision==='relocate').length+' relocated · '+state.rows.filter(r=>r.group==='added').length+' manually added';
+ for(const group of ['direct','near','added','other']){
+  const rows=filtered(group),pages=Math.max(1,Math.ceil(rows.length/pageSize));state.pages[group]=Math.min(state.pages[group],pages-1);
+  $(group).classList.toggle('hide',rows.length===0);
+  $(''+group+'Count').textContent=rows.length.toLocaleString()+' shown';
+  $(group+'Rows').innerHTML=rows.slice(state.pages[group]*pageSize,(state.pages[group]+1)*pageSize).map(r=>$('visualFilter').value==='likely_blocked'?compactRow(r):`<article class="row"><div>${preview(r)}<div class="attribution">Esri, Vantor, Earthstar Geographics, GIS User Community</div></div><div><h3>${esc(r.area_name||'Planting candidate')}</h3><span class="badge">${esc(r.candidate_id)}</span> <span class="badge">${esc(r.decision)}</span><p class="visual-note">${esc(visualNote(r))}</p><p class="utility-note">${esc(lineNote(r))}</p><p class="coords">${Number(r.latitude).toFixed(7)}, ${Number(r.longitude).toFixed(7)}</p>${r.coordinate_changed?'<p class="sub">Location changed since the original canopy screening.</p>':''}<div class="actions"><button data-edit="${esc(r.candidate_id)}" ${r.available?'':'disabled'}>Review / Relocate</button><button data-keep="${esc(r.candidate_id)}" ${r.available?'':'disabled'}>Keep</button><a class="link" target="_blank" rel="noopener" href="${maps(r)}">Google Maps ↗</a></div><p class="sub">${esc(r.review?.note||r.message||'Red point marks the candidate location, not a tree trunk.')}</p></div></article>`).join('')||'<p>No candidates match this filter.</p>';
+  $(group+'Pager').innerHTML=`<button data-page="${group}" data-step="-1" ${state.pages[group]===0?'disabled':''}>Previous</button><span>Page ${state.pages[group]+1} / ${pages}</span><button data-page="${group}" data-step="1" ${state.pages[group]+1>=pages?'disabled':''}>Next</button>`;
+ }
+ loadPreviews();
+}
+async function timedFetch(url,options={},ms=45000){
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),ms);
+ try{return await fetch(url,{...options,signal:controller.signal})}finally{clearTimeout(timer)}
+}
+async function load(){
+ if(state.busy||state.loading)return;state.loading=true;
+ try{const r=await timedFetch('/api/canopy-review',{cache:'no-store'});if(!r.ok)throw Error('Could not load candidates (HTTP '+r.status+').');const d=await r.json();if(d.version!==BUILD)throw Error('Old EcoTrace server is running. Stop it with Control+C and start the V14 launcher, then refresh this page.');state.rows=d.rows;if(d.transmission_config){$('lineEnabled').checked=d.transmission_config.enabled;$('lineDistance').value=d.transmission_config.threshold_m;}state.mapPoints=d.map_points||d.rows.filter(r=>r.available&&r.decision!=='exclude');render();positionMarker()}
+ catch(e){const message=e.name==='AbortError'?'The local server did not respond within 45 seconds. Check its terminal for an error.':e.message;$('summary').textContent=message;toast(message)}
+ finally{state.loading=false}
+}
+async function loadEvidence(){
+ const row=state.selected;if(!row||state.adding||!$('evidenceDetails').open)return;
+ if(row.original_review_metadata)return;
+ $('evidence').textContent='Loading this candidate’s review notes…';
+ try{const r=await timedFetch('/api/canopy-review/details?id='+encodeURIComponent(row.candidate_id));if(!r.ok)throw Error('Could not load notes.');const d=await r.json();if(state.selected?.candidate_id===row.candidate_id){row.original_review_metadata=d.original_review_metadata;syncEditor()}}
+ catch(e){$('evidence').textContent='Notes unavailable: '+e.message}
+}
+$('evidenceDetails').addEventListener('toggle',loadEvidence);
+function syncEditor(){const r=state.selected;$('keepNext').disabled=$('nextCandidate').disabled=state.adding||state.busy;if(state.adding){$('title').textContent='Add candidates · each click creates a new point';$('current').textContent=state.addCount?state.addCount+' new point(s) saved in this session. Click another location to add more.':'Original candidates stay in place. Click each new planting location.';$('finishAdd').classList.remove('hide');$('addNearby').classList.add('hide');$('newFields').classList.remove('hide');$('keep').disabled=true;$('exclude').disabled=true;$('undo').disabled=true;$('marker').classList.add('hide');$('evidence').textContent='Canopy will be checked after you select a location.';positionMarker();return}$('finishAdd').classList.add('hide');$('addNearby').classList.remove('hide');$('newFields').classList.add('hide');$('marker').classList.add('hide');$('keep').disabled=state.busy;$('exclude').disabled=state.busy;$('title').textContent=r.candidate_id+' · '+(r.area_name||'Candidate');$('current').textContent='Saved: '+r.latitude.toFixed(7)+', '+r.longitude.toFixed(7)+' · '+r.decision+' · '+lineNote(r)+' · '+visualNote(r);$('google').href=maps(r);$('undo').disabled=!r.can_undo||state.busy;$('evidence').textContent=JSON.stringify({satellite_visual_review:r.visual_review||'Not in the direct-canopy visual review',original_2022_screening:r.status,current_point_canopy:r.live_canopy||'Original screening applies only if the point has not moved.',review:r.review||null,previous_notes:r.original_review_metadata||'Open this section to load the previous notes.'},null,2);positionMarker()}
+function updateMapPoint(row){
+ state.mapPoints=state.mapPoints.filter(p=>p.candidate_id!==row.candidate_id);
+ if(row.available&&row.decision!=='exclude')state.mapPoints.push({candidate_id:row.candidate_id,latitude:row.latitude,longitude:row.longitude});
+}
+function markersHtml(view,selectedId,aspect=9/16){
+ const b=[view.x-view.w/2,view.y-view.w*aspect/2,view.x+view.w/2,view.y+view.w*aspect/2],[minLat,minLon]=unproject(b[0],b[1]),[maxLat,maxLon]=unproject(b[2],b[3]);
+ return state.mapPoints.filter(row=>row.latitude>=minLat&&row.latitude<=maxLat&&row.longitude>=minLon&&row.longitude<=maxLon).map(row=>{
+  const [x,y]=project(row.latitude,row.longitude),u=(x-b[0])/(b[2]-b[0]),v=(b[3]-y)/(b[3]-b[1]);
+  const selected=row.candidate_id===selectedId;
+  return `<span class="saved-dot${selected?' selected':''}" role="button" tabindex="0" aria-label="Select candidate ${esc(row.candidate_id)}" data-candidate="${esc(row.candidate_id)}" title="${esc(row.candidate_id)}" style="left:${u*100}%;top:${v*100}%"></span>`;
+ }).join('');
+}
+function positionMarker(){
+ if(!state.view)return;
+ const layer=$('markers');layer.classList.toggle('hide',!state.ready);
+ layer.innerHTML=markersHtml(state.view,state.selected?.candidate_id);drawLines();
+}
+async function draw(){
+ state.ready=false;const seq=++state.seq,view={...state.view};$('mapStatus').textContent='Loading satellite tiles…';$('mapImage').style.opacity='.25';positionMarker();
+ try{if(!await paintTiles($('mapImage'),view,960,()=>seq===state.seq))return;state.ready=true;$('mapImage').style.opacity='1';positionMarker();$('mapStatus').textContent=state.armed?(state.adding?'Click to save a new candidate.':'Click to save the new location.'):'Drag to pan, or select a dot. Orange: overhead lines; blue: underground.';}
+ catch(e){if(seq!==state.seq)return;state.ready=false;$('mapImage').innerHTML='<span class="tile-error">Satellite tiles unavailable from both servers</span>';$('mapImage').style.opacity='1';positionMarker();$('mapStatus').textContent='Satellite tiles could not load. Editing locations is paused; Google Maps remains available.';}
+}
+
+function arm(value){state.armed=value;$('map').classList.toggle('armed',value);$('arm').textContent=value?(state.adding?'Pause adding':'Cancel relocation'):(state.adding?'Resume adding':'Relocate: click a new point');$('mapLabel').textContent=value?(state.adding?'Click to add · existing red dots stay saved':'Click to relocate selected dot · others stay saved'):(state.adding?'Red dots: existing saved candidates':'Red dots: saved candidates · yellow ring: selected');if(state.ready)$('mapStatus').textContent=value?'Click a new location to save automatically.':'Relocation is off. Drag to pan.'}
+function openEditor(id){if(state.busy)return;$('evidenceDetails').open=false;state.adding=false;state.selected=state.rows.find(r=>r.candidate_id===id);if(!state.selected?.available)return;$('note').value=state.selected.review?.note||'';state.view=viewFor(state.selected);arm(false);syncEditor();$('editor').showModal();draw()}
+function openAdd(){
+ if(state.busy)return;
+ const previous=state.view?{...state.view}:null;
+ state.adding=true;state.requestId=crypto.randomUUID();state.addCount=0;state.lastAdded=null;
+ state.view=previous||{...viewFor(state.selected||{latitude:37.354,longitude:-121.955}),w:900};
+ $('candidateName').value='';$('note').value='';$('google').href=maps(state.selected||{latitude:37.354,longitude:-121.955});
+ arm(true);syncEditor();if(!$('editor').open)$('editor').showModal();draw();
+}
+async function saveNew(coords){
+ if(state.busy)return;state.busy=true;document.querySelectorAll('button').forEach(b=>b.disabled=true);
+ try{
+  const response=await fetch('/api/canopy-review',{method:'POST',headers:{'Content-Type':'application/json','X-Canopy-Token':TOKEN},body:JSON.stringify({action:'add',latitude:coords[0],longitude:coords[1],name:$('candidateName').value,note:$('note').value,request_id:state.requestId})});
+  const data=await response.json();if(!response.ok)throw Error(data.detail||'Save failed.');
+  const i=state.rows.findIndex(r=>r.candidate_id===data.entry.candidate_id);if(i<0)state.rows.push(data.entry);else state.rows[i]=data.entry;updateMapPoint(data.entry);
+  state.lastAdded=data.entry;state.addCount++;state.requestId=crypto.randomUUID();
+  // Keep the original selection and remain in Add mode. Every next click is POST action=add.
+  arm(true);syncEditor();render();
+  $('mapStatus').textContent='Added '+data.entry.candidate_id+'. Click another point to add more. '+canopyText(data.entry);
+  toast('Added a separate point. Original candidates unchanged.');
+ }catch(e){toast(e.message);$('mapStatus').textContent='Could not confirm save: '+e.message}
+ finally{state.busy=false;document.querySelectorAll('button').forEach(b=>b.disabled=false);render();syncEditor()}
+}
+async function save(action,row=state.selected,coords=null){if(state.busy||!row)return;if(state.adding){toast('Finish Add mode before editing an existing candidate.');return;}state.busy=true;document.querySelectorAll('button').forEach(b=>b.disabled=true);
+ try{const response=await fetch('/api/canopy-review',{method:'POST',headers:{'Content-Type':'application/json','X-Canopy-Token':TOKEN},body:JSON.stringify({id:row.candidate_id,revision:row.revision,action,note:$('editor').open?$('note').value:'',latitude:coords?.[0],longitude:coords?.[1]})});const data=await response.json();if(!response.ok)throw Error(data.detail||'Save failed.');const i=state.rows.findIndex(r=>r.candidate_id===row.candidate_id);state.rows[i]=data.entry;updateMapPoint(data.entry);if(state.selected?.candidate_id===row.candidate_id){state.selected=data.entry;syncEditor()}arm(false);render();toast(action==='exclude'?'Candidate deleted from the map and active suggestions. Undo is available.':action==='relocate'?'Location saved into EcoTrace. Undo is available.':'Saved into EcoTrace.');if($('editor').open)$('mapStatus').textContent=action==='relocate'?'New coordinates saved. '+canopyText(data.entry):action==='exclude'?'Deleted '+row.candidate_id+'. Press Undo to restore it.':'Review saved.';return true;
+ }catch(e){toast(e.message);$('mapStatus').textContent='Not saved: '+e.message;return false}
+ finally{state.busy=false;document.querySelectorAll('button').forEach(b=>b.disabled=false);render();if(state.selected)syncEditor()}}
+function canopyText(r){const s=r.live_canopy?.status;return s==='canopy_at_candidate_review'?'2022 canopy is still detected directly here.':s==='nearby_canopy_within_3m_review'?'2022 canopy remains nearby within 3 m.':s==='unavailable'?'Canopy recheck unavailable.':s?'No canopy detected in the samples; this does not confirm open planting space.':''}
+function selectDot(id){
+ if(state.busy)return;
+ const row=state.rows.find(r=>r.candidate_id===id);
+ if(!row?.available){toast('This candidate is unavailable. Refresh the list.');return}
+ if(!$('editor').open){openEditor(id)}
+ else{$('evidenceDetails').open=false;state.adding=false;state.selected=row;arm(false);$('note').value=row.review?.note||'';syncEditor()}
+ $('mapStatus').textContent='Selected '+id+'. Delete selected candidate removes only this point; Undo restores it.';
+}
+document.addEventListener('keydown',e=>{const dot=e.target.closest?.('[data-candidate]');if(dot&&(e.key==='Enter'||e.key===' ')){e.preventDefault();selectDot(dot.dataset.candidate)}});
+document.addEventListener('click',e=>{const dot=e.target.closest?.('[data-candidate]');if(dot){e.preventDefault();selectDot(dot.dataset.candidate);return}const b=e.target.closest('button');if(!b)return;if(b.dataset.edit)openEditor(b.dataset.edit);if(b.dataset.keep)save('keep',state.rows.find(r=>r.candidate_id===b.dataset.keep));if(b.dataset.page){state.pages[b.dataset.page]+=Number(b.dataset.step);render();$(b.dataset.page).scrollIntoView()}});
+let searchTimer;$('search').oninput=()=>{clearTimeout(searchTimer);searchTimer=setTimeout(()=>{state.pages={direct:0,near:0,added:0,other:0};render()},180)};$('filter').onchange=()=>{state.pages={direct:0,near:0,added:0,other:0};render()};$('visualFilter').onchange=()=>{state.pages={direct:0,near:0,added:0,other:0};render()};$('refresh').onclick=load;$('lineView').onchange=()=>{state.pages={direct:0,near:0,added:0,other:0};render()};$('addCandidate').onclick=$('addNearby').onclick=openAdd;
+$('editor').addEventListener('close',()=>{state.adding=false;arm(false);render()});
+$('close').onclick=()=>{if(!state.busy){arm(false);$('editor').close()}};$('editor').addEventListener('cancel',e=>{if(state.busy)e.preventDefault()});
+$('finishAdd').onclick=()=>{if(state.busy)return;state.adding=false;arm(false);if(state.selected){syncEditor();$('note').value=state.selected.review?.note||''}else $('editor').close()};
+function nextCandidateId(){
+ const queue=['direct','near','added','other'].flatMap(filtered).filter(r=>r.available),i=queue.findIndex(r=>r.candidate_id===state.selected?.candidate_id);
+ if(!queue.length)return null;
+ const next=queue[(i+1)%queue.length];return next?.candidate_id===state.selected?.candidate_id?null:next?.candidate_id;
+}
+$('nextCandidate').onclick=()=>{if(state.busy||state.adding)return;const id=nextCandidateId();if(id)openEditor(id);else toast('No other candidates match the current filters.')};
+$('keepNext').onclick=async()=>{if(state.busy||state.adding)return;const id=nextCandidateId();if(await save('keep')){if(id)openEditor(id);else toast('Saved. No other candidates match the current filters.')}};
+$('arm').onclick=()=>arm(!state.armed);$('keep').onclick=()=>save('keep');$('exclude').onclick=()=>save('exclude');$('undo').onclick=()=>save('undo');
+for(const [id,dx,dy] of [['west',-.25,0],['east',.25,0],['north',0,.25],['south',0,-.25]])$(id).onclick=()=>{state.view.x+=dx*state.view.w;state.view.y+=dy*state.view.w*9/16;draw()};
+$('zoomIn').onclick=()=>{state.view.w=Math.max(20,state.view.w/1.6);draw()};$('zoomOut').onclick=()=>{state.view.w=Math.min(2000,state.view.w*1.6);draw()};$('center').onclick=()=>{state.view=viewFor(state.selected||state.lastAdded||{latitude:37.354,longitude:-121.955});draw()};
+let down=null;$('map').addEventListener('pointerdown',e=>{if(e.target?.closest?.('[data-candidate]')){down=null;return}if(!state.ready||state.busy||e.button!==0)return;down={x:e.clientX,y:e.clientY};$('map').setPointerCapture(e.pointerId)});
+$('map').addEventListener('pointercancel',()=>down=null);$('map').addEventListener('pointerup',e=>{if(!down)return;const dx=e.clientX-down.x,dy=e.clientY-down.y;down=null;const box=$('map').getBoundingClientRect();if(Math.hypot(dx,dy)>6){state.view.x-=dx/box.width*state.view.w;state.view.y+=dy/box.height*state.view.w*9/16;draw();return}if(!state.armed||!state.ready||state.busy)return;const u=(e.clientX-box.left)/box.width,v=(e.clientY-box.top)/box.height;if(u<0||u>1||v<0||v>1)return;const b=bounds(state.view);const coords=unproject(b[0]+u*(b[2]-b[0]),b[3]-v*(b[3]-b[1]));if(state.adding)saveNew(coords);else save('relocate',state.selected,coords) });
+$('applyLines').onclick=async()=>{
+ if(state.busy||state.loading)return;state.busy=true;$('applyLines').disabled=true;
+ try{const r=await timedFetch('/api/canopy-review',{method:'POST',headers:{'Content-Type':'application/json','X-Canopy-Token':TOKEN},body:JSON.stringify({action:'transmission_config',enabled:$('lineEnabled').checked,threshold_m:Number($('lineDistance').value)})});const d=await r.json();if(!r.ok)throw Error(d.detail||'Filter could not be saved.');toast('Transmission filter saved. Recalculate existing routes to update suggestions.');}
+ catch(e){toast(e.message)}finally{state.busy=false;$('applyLines').disabled=false;await load()}
+};
+fetch('/api/canopy-review/transmission-lines').then(r=>r.ok?r.json():null).then(d=>{if(d?.features){state.lines=d;drawLines()}}).catch(()=>{});
+if(typeof location!=='undefined'&&new URLSearchParams(location.search).get('view')==='blocked')$('visualFilter').value='likely_blocked';
+load();
+</script></body></html>

@@ -1,0 +1,54 @@
+<section id="ecotrace-gis-methods" class="mt-3 space-y-2 text-xs leading-5 text-slate-300">
+  <p><strong>Local canopy data:</strong> Two 2022 canopy-cover rasters for the San Jos&eacute; and San Francisco&ndash;Oakland urban areas supply mapped crowns within the CA-17 clips. Two county height rasters supply Santa Clara 2020 vegetation-only heights and Alameda&ndash;Contra Costa heights from mixed survey years. These supplement existing mapped trees, building shadows and WRI/Meta canopy evidence for walking and cycling.</p>
+  <p><strong>QGIS preparation:</strong> QGIS was used to overlay canopy on satellite imagery, check alignment and resolution, and clip canopy/height layers to CA-17. EcoTrace uses these prepared inputs to calculate route scores.</p>
+  <p id="ecotrace-gis-data-counts"><strong>Dataset counts:</strong> Four local rasters: two canopy-cover layers and two height layers. Open this section to load the installed model and valid canopy-pixel counts.</p>
+  <p><strong>Route averages:</strong> Each route is divided into sections at most 15 m long and sampled at each section's midpoint. Longer sections carry more weight in the route average; at constant speed this also weights by travel time. The average represents samples along the route.</p>
+  <p><strong>Shadow method:</strong> Sun rays are checked every 0.6 m up to 120 m toward the sun, from a 1.5 m sampling height. The model assumes flat local ground, vertical vegetation columns and a 65/100 canopy contribution when a ray is blocked. The higher of the raster and existing tree contributions is used, then building shadows and the heat adjustment contribute to the final index.</p>
+  <p><strong>Walking comfort:</strong> With complete nearby weather, a sunny radiation scenario estimates mean radiant temperature (MRT), then UTCI uses MRT, air temperature, humidity and wind. MRT/UTCI are averaged across route sections; the hottest sampled UTCI and estimated minutes at UTCI &ge;32&deg;C are also reported. Station weather and departure-time shade stay fixed during the trip. Otherwise, the heat-map model supplies averaged heat scores and estimated sun/shade minutes. These are modeled conditions, not measured sidewalk or body temperatures.</p>
+  <p><strong>Height gaps:</strong> Canopy pixels without usable height, or with unconfirmed height units, use a labeled 8 m assumption. Gaps can result from clipped coverage, NoData, invalid values, or differences between survey dates and mapped crowns. The cause of an individual gap is not established by a missing value alone. An unknown unit means the height number exists but its scale is not configured. Zero height remains zero; missing canopy pixels remain unknown.</p>
+  <p id="ecotrace-gis-height-counts"><strong>Height coverage:</strong> Counts load when this section opens. They describe canopy ray samples checked since server startup, including repeated pixels and diagnostic probes. They are not a district-wide missing-height percentage.</p>
+  <p><strong>Limitations:</strong> Crown and height surveys may be from different years. Canopy attenuation and crown geometry are approximations, and long shadows are truncated at 120 m. Time-matched observations are needed to assess accuracy. Route choice still uses modeled shade and detour limits.</p>
+</section>
+<script>
+(() => {
+  const section = document.getElementById('ecotrace-gis-methods');
+  const details = section && section.closest('details');
+  if (!details) return;
+  const format = n => Number.isFinite(n) ? n.toLocaleString() : 'unavailable';
+  async function updateGisCounts() {
+    if (!details.open) return;
+    try {
+      const response = await fetch('/api/ecotrace-gis-status', {cache:'no-store'});
+      if (!response.ok) throw new Error('status');
+      const data = await response.json();
+      const rasters = data.rasters || [];
+      const covers = rasters.filter(x => x.kind === 'cover');
+      const coverText = covers.map(x => x.name + ': ' + format(x.positive_pixels) + ' valid canopy pixels').join('; ');
+      document.getElementById('ecotrace-gis-data-counts').textContent =
+        'Dataset counts: ' + format(data.mapped_tree_count) + ' mapped tree records; ' +
+        format(data.mapped_building_count) + ' loaded building records; ' + rasters.length +
+        ' local rasters. ' + coverText + '. Pixels are map cells, not individual trees; layer counts may overlap.';
+      const h = data.height_sample_counts;
+      const units = rasters.filter(x => x.kind === 'height').map(x =>
+        x.name + ': ' + (x.height_unit === 'unknown' ? 'units unconfirmed' : x.height_unit)).join('; ');
+      let text = 'Height units configured: ' + units + '. ';
+      if (!h || !h.total) {
+        text += 'No canopy height samples counted yet. Calculate a route, then reopen this section.';
+      } else {
+        const assumed = h.missing_or_invalid + h.unconfirmed_units;
+        text += format(h.total) + ' canopy ray samples checked: ' + format(h.measured) +
+          ' with usable raster height, ' + format(h.missing_or_invalid) +
+          ' missing/invalid, and ' + format(h.unconfirmed_units) +
+          ' with unconfirmed units. An assumed height was used for ' +
+          (100*assumed/h.total).toFixed(1) + '% of these samples. Counts are since startup, include repeats/probes, and do not describe the whole district.';
+      }
+      document.getElementById('ecotrace-gis-height-counts').textContent = text;
+    } catch (_) {
+      document.getElementById('ecotrace-gis-height-counts').textContent =
+        'Live height counts could not be loaded. Use the GIS launcher and reopen this section.';
+    }
+  }
+  details.addEventListener('toggle', updateGisCounts);
+  updateGisCounts();
+})();
+</script>
