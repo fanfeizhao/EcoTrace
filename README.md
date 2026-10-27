@@ -12,7 +12,7 @@ Local heat, route-shade comparison, and tree-planting candidate review for Calif
 
 ## Repository scope
 
-This source export contains application code and the available V19 editor and GIS extensions from the developer's local installation. It excludes credentials, account/community databases, user uploads, candidate records, cached imagery, and large GIS datasets. HTML files larger than 5 MB are set aside for manual review because they may embed datasets; their paths are recorded in `export_report.json`. Check that list for any runtime assets needed by the app. It is **not a self-contained runnable demo** until the required local data and configuration are provided. GitHub Pages cannot run the Python backend.
+This source export contains application code and the available V19 editor and GIS extensions from the developer's local installation. It excludes credentials, account/community databases, user uploads, candidate records, cached imagery, and large GIS datasets. HTML files larger than 5 MB are set aside for manual review because they may embed datasets; their paths are recorded in `export_report.json`. Check that list for any runtime assets needed by the app. It is not a self-contained runnable demo until the required local data and configuration are provided. GitHub Pages cannot run the Python backend.
 
 ## Technology
 
